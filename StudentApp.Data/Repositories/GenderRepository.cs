@@ -1,15 +1,21 @@
-﻿using StudentApp.WinForm.Entities;
-using StudentApp.WinForm.Helpers;
-using StudentApp.WinForm.Interfaces;
-using System.Data;
+﻿using StudentApp.Data.Helpers;
+using StudentApp.Data.Interfaces;
+using StudentApp.Entities;
+using System;
+using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Data;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace StudentApp.WinForm.Repositories
+namespace StudentApp.Data.Repositories
 {
     public class GenderRepository : IGenderRepository
     {
         public List<Gender> GetGenders()
         {
+
             var connection = new DbConnectionHelper().Connection;
 
             List<Gender> genders = new List<Gender>();
@@ -18,19 +24,17 @@ namespace StudentApp.WinForm.Repositories
             SqlCommand command = new SqlCommand();
             command.CommandType = CommandType.Text;
             command.Connection = connection;
-            command.CommandText = "Select * from Genders";
+            command.CommandText = @"select * from Genders";
 
             connection.Open();
             var reader = command.ExecuteReader();
             while (reader.Read())
             {
-                var addedGender = new Gender();
-
-                addedGender.Id = Convert.ToInt32(reader[0]);
-                addedGender.Definition = Convert.ToString(reader[1]);
-
-
-                genders.Add(addedGender);
+                var gender = new Gender();
+                gender.Id = reader.GetInt32(0);
+                gender.Definition=reader.GetString(1);
+                
+                genders.Add(gender);
             }
             reader.Close();
             connection.Close();

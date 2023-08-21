@@ -1,16 +1,15 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using StudentApp.WinForm.Interfaces;
-using StudentApp.WinForm.Repositories;
+using StudentApp.Data.Interfaces;
+using StudentApp.Data.Repositories;
+using System;
 
-namespace StudentApp.WinForm.Container
+namespace StudentApp.Data
 {
-    public class DependencyContainer
+    public class DataServiceRegistration
     {
-        //Dependency Inversion... 
-
 
         ServiceProvider serviceProvider;
-        public DependencyContainer()
+        public DataServiceRegistration()
         {
             serviceProvider = new ServiceCollection().AddScoped<IGenderRepository, GenderRepository>()
                 .AddScoped<IInstructorRepository, InstructorRepository>().BuildServiceProvider();
@@ -28,5 +27,6 @@ namespace StudentApp.WinForm.Container
         {
             return serviceProvider.GetRequiredService<IInstructorRepository>();
         }
+
     }
 }

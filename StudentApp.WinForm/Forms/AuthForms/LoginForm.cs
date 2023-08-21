@@ -1,6 +1,4 @@
-using StudentApp.WinForm.Container;
 using StudentApp.WinForm.Forms.AuthForms;
-using StudentApp.WinForm.Interfaces;
 
 namespace StudentApp.WinForm
 {
@@ -8,11 +6,11 @@ namespace StudentApp.WinForm
     {
         // IOC => INVERSION OF CONTROL
 
-        private readonly IGenderRepository genderRepository;
+  
         public LoginForm()
         {
             InitializeComponent();
-            genderRepository = new DependencyContainer().GetGenderRepositoryInstance();
+           
         }
 
         private void btnClose_Click(object sender, EventArgs e)

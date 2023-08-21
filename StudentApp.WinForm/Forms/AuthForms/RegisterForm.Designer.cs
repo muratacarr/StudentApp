@@ -176,6 +176,7 @@
             btnRegister.TabIndex = 8;
             btnRegister.Text = "Kayıt Ol";
             btnRegister.UseVisualStyleBackColor = true;
+            btnRegister.Click += btnRegister_Click;
             // 
             // btnCancel
             // 

@@ -1,18 +1,20 @@
-﻿using StudentApp.WinForm.Entities;
-using StudentApp.WinForm.Helpers;
-using StudentApp.WinForm.Interfaces;
+﻿using StudentApp.Data.Helpers;
+using StudentApp.Data.Interfaces;
+using StudentApp.Entities;
+using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace StudentApp.WinForm.Repositories
+namespace StudentApp.Data.Repositories
 {
     public class InstructorRepository : IInstructorRepository
     {
         public List<Instructor> GetInstructors()
         {
-            // DTO => Business
-
-
 
             var connection = new DbConnectionHelper().Connection;
 
@@ -50,7 +52,6 @@ on Users.Id = Instructors.UserId";
 
 
             return instructors;
-
         }
     }
 }
