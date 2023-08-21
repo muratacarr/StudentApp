@@ -11,7 +11,7 @@ namespace StudentApp.Business
         ServiceProvider serviceProvider;
         public BusinessServiceRegistration()
         {
-            serviceProvider = new ServiceCollection().AddScoped<IGenderService, GenderManager>()
+            serviceProvider = new ServiceCollection().AddScoped<IGenderService, GenderManager>().AddScoped<IInstructorService,InstructorManager>()
                 .BuildServiceProvider();
         }
         // Microsoft  
@@ -23,9 +23,9 @@ namespace StudentApp.Business
             return serviceProvider.GetRequiredService<IGenderService>();
         }
 
-        //public IIn GetInstructorRepositoryInstance()
-        //{
-        //    return serviceProvider.GetRequiredService<IInstructorRepository>();
-        //}
+        public IInstructorService GetInstructorServiceInstance()
+        {
+            return serviceProvider.GetRequiredService<IInstructorService>();
+        }
     }
 }

@@ -5,12 +5,14 @@ namespace StudentApp.WinForm.Forms.AuthForms
     public partial class RegisterForm : Form
     {
         private readonly IGenderService genderService;
+        private readonly IInstructorService instructorService;
         //private readonly IInstructorRepository instructorRepository;
         public RegisterForm()
         {
             InitializeComponent();
             var dependencyContainer = new BusinessServiceRegistration();
             genderService = dependencyContainer.GetGenderServiceInstance();
+            instructorService = dependencyContainer.GetInstructorServiceInstance(); 
             //instructorRepository = dependencyContainer.GetInstructorRepositoryInstance();
         }
 
@@ -22,21 +24,21 @@ namespace StudentApp.WinForm.Forms.AuthForms
         private void RegisterForm_Load(object sender, EventArgs e)
         {
             LoadGender();
-            //LoadInstructor();
+            LoadInstructor();
         }
 
-        //private void LoadInstructor()
-        //{
-        //    var instructorList = instructorRepository.GetInstructors();
+        private void LoadInstructor()
+        {
+            var instructorList = instructorService.GetInstructors();
 
-        //    var list = ConvertToInstrocturDtoList(instructorList);
+         
 
-        //    cmbInstructor.DataSource = null;
-        //    cmbInstructor.DataSource = list;
-        //    cmbInstructor.DisplayMember = "FullName";
-        //    cmbInstructor.ValueMember = "Id";
+            cmbInstructor.DataSource = null;
+            cmbInstructor.DataSource = instructorList;
+            cmbInstructor.DisplayMember = "FullName";
+            cmbInstructor.ValueMember = "Id";
 
-        //}
+        }
 
         private void LoadGender()
         {
@@ -47,35 +49,6 @@ namespace StudentApp.WinForm.Forms.AuthForms
             cmbGender.ValueMember = "Id";
         }
 
-        /// DONT REPEAT YOURSELF
-        /// REPOSITORY DESIGN PATTERN
-
-
-
-        // BUSINESS 
-        // FULLNAME
-        //private List<InstructorListDto> ConvertToInstrocturDtoList(List<Instructor> instructors)
-        //{
-        //    var list = new List<InstructorListDto>();
-        //    foreach (var instructor in instructors)
-        //    {
-        //        var dto = new InstructorListDto();
-
-        //        dto.Id = instructor.Id;
-        //        dto.UserId = instructor.UserId;
-        //        dto.PhoneNumber = instructor.PhoneNumber;
-        //        dto.FullName = instructor.Name + " " + instructor.Surname;
-        //        dto.Salary = instructor.Salary;
-        //        dto.GenderId = instructor.GenderId;
-        //        dto.Password = instructor.Password;
-        //        dto.Username = instructor.Username;
-
-        //        list.Add(dto);
-        //    }
-
-        //    return list;
-
-        //}
 
         private void btnRegister_Click(object sender, EventArgs e)
         {
