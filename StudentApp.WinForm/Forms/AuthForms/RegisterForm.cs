@@ -6,14 +6,12 @@ namespace StudentApp.WinForm.Forms.AuthForms
     {
         private readonly IGenderService genderService;
         private readonly IInstructorService instructorService;
-        //private readonly IInstructorRepository instructorRepository;
         public RegisterForm()
         {
             InitializeComponent();
             var dependencyContainer = new BusinessServiceRegistration();
             genderService = dependencyContainer.GetGenderServiceInstance();
             instructorService = dependencyContainer.GetInstructorServiceInstance(); 
-            //instructorRepository = dependencyContainer.GetInstructorRepositoryInstance();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -30,9 +28,6 @@ namespace StudentApp.WinForm.Forms.AuthForms
         private void LoadInstructor()
         {
             var instructorList = instructorService.GetInstructors();
-
-         
-
             cmbInstructor.DataSource = null;
             cmbInstructor.DataSource = instructorList;
             cmbInstructor.DisplayMember = "FullName";
@@ -52,10 +47,14 @@ namespace StudentApp.WinForm.Forms.AuthForms
 
         private void btnRegister_Click(object sender, EventArgs e)
         {
+            if(!string.IsNullOrEmpty(txtName.Text) && !string.IsNullOrEmpty(txtLastName.Text) && !string.IsNullOrEmpty(txtPassword.Text) && !string.IsNullOrEmpty(txtPhoneNumber.Text) && !string.IsNullOrEmpty(txtStudentNumber.Text) && !string.IsNullOrEmpty(txtUsername.Text))
+            {
 
+            }
+            else
+            {
+                MessageBox.Show("Alanları boş bırakmayınız ");
+            }
         }
     }
 }
-
-
-// BUSINESS || DATA yı birbirinden ayırmak.
