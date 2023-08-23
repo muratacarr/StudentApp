@@ -149,6 +149,7 @@
             cmbGender.Name = "cmbGender";
             cmbGender.Size = new Size(480, 30);
             cmbGender.TabIndex = 7;
+            cmbGender.SelectedIndexChanged += cmbGender_SelectedIndexChanged;
             // 
             // txtPassword
             // 
@@ -223,6 +224,7 @@
             cmbInstructor.Name = "cmbInstructor";
             cmbInstructor.Size = new Size(480, 30);
             cmbInstructor.TabIndex = 7;
+            cmbInstructor.SelectedIndexChanged += cmbInstructor_SelectedIndexChanged;
             // 
             // RegisterForm
             // 

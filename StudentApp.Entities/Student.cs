@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace StudentApp.Entities
 {
-    public class Student : AppUser
+    public class Student 
     {
+        public int Id { get; set; }
         public int InstructorId { get; set; }
         public int StudentNumber { get; set; }
         public int UserId { get; set; }

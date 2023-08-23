@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StudentApp.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,8 @@ using System.Threading.Tasks;
 
 namespace StudentApp.Data.Interfaces
 {
-    public class IStudentRepository
+    public interface IStudentRepository
     {
+        void Create(Student student);
     }
 }

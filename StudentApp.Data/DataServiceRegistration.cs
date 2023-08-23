@@ -12,7 +12,7 @@ namespace StudentApp.Data
         public DataServiceRegistration()
         {
             serviceProvider = new ServiceCollection().AddScoped<IGenderRepository, GenderRepository>()
-                .AddScoped<IInstructorRepository, InstructorRepository>().AddScoped<IAppUserRepository, AppUserRepository>().BuildServiceProvider();
+                .AddScoped<IInstructorRepository, InstructorRepository>().AddScoped<IAppUserRepository, AppUserRepository>().AddScoped<IStudentRepository, StudentRepository>().BuildServiceProvider();
         }
         // Microsoft  
 
@@ -31,6 +31,11 @@ namespace StudentApp.Data
         public IAppUserRepository GetAppUserRepositoryInstance()
         {
             return serviceProvider.GetRequiredService<IAppUserRepository>();
+        }
+
+        public IStudentRepository GetStudentRepositoryInstance()
+        {
+            return serviceProvider.GetRequiredService<IStudentRepository>();
         }
 
     }

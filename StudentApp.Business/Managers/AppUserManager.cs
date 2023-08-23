@@ -14,11 +14,32 @@ namespace StudentApp.Business.Managers
     public class AppUserManager : IAppUserService
     {
         private readonly IAppUserRepository userRepository;
+        private readonly IStudentRepository studentRepository;
+
+        // => PAYMENT MANAGER => o kadar yoğun  
+        // => AppUserManager  => ActiveUser => sadece 1 kere çağrılıyor.
+
+        // N KATMANLI MİMARI 
+        // ONION MİMARI 
+        // MINIMAL API 
+
+
+        // MICROSERVİCE => Bir mimari mi ? 
+
+
+
+        // HASTA => HASTALIK => TEDAVI
+
+        // Her hastalık tedavi edilir mi ?
+
         public AppUserManager()
         {
-            userRepository = new DataServiceRegistration().GetAppUserRepositoryInstance();
+            var container = new DataServiceRegistration();
+
+            userRepository = container.GetAppUserRepositoryInstance();
+            studentRepository = container.GetStudentRepositoryInstance();
         }
-        public void CreateUser(AppUserCreateDto createdDto)
+        public void CreateUser(StudentCreateDto createdDto)
         {
             //var user = new Entities.AppUser { 
             //GenderId = createdDto.GenderId,
@@ -31,6 +52,13 @@ namespace StudentApp.Business.Managers
             //userRepository.Create(user);
 
 
+            // bundan nasıl kaçınabiliriz ??? 
+
+            // Scaling
+            // TRANSACTION MANAGEMENT
+            // ADO.NET TRANSACTION => 
+
+            // bir iş  transaction 
             userRepository.Create(new Entities.AppUser
             {
                 GenderId = createdDto.GenderId,
@@ -40,6 +68,20 @@ namespace StudentApp.Business.Managers
                 Surname = createdDto.Surname,
                 Username = createdDto.Username,
             });
+
+
+            // bir iş transaction
+            studentRepository.Create(new Entities.Student
+            {
+                InstructorId = createdDto.InstructorId,
+                StudentNumber = createdDto.StudentNumber,
+                UserId = createdDto.UserId,
+            });
+            
         }
     }
 }
+
+
+
+

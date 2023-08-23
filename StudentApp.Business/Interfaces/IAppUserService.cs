@@ -9,6 +9,6 @@ namespace StudentApp.Business.Interfaces
 {
     public interface IAppUserService
     {
-        void CreateUser(AppUserCreateDto createdDto);
+        void CreateUser(StudentCreateDto createdDto);
     }
 }

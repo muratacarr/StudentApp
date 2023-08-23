@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace StudentApp.DTOs
 {
-    public class AppUserCreateDto
+    public class StudentCreateDto
     {
         public string Name { get; set; }
         public string Surname { get; set; }
@@ -14,5 +14,9 @@ namespace StudentApp.DTOs
         public string PhoneNumber { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
+
+        public int StudentNumber { get; set; }
+        public int UserId { get; set; }
+        public int InstructorId  { get; set; }
     }
 }

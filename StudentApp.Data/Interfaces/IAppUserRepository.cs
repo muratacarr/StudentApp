@@ -9,6 +9,6 @@ namespace StudentApp.Data.Interfaces
 {
     public interface IAppUserRepository
     {
-        void Create(AppUser appUser);
+        int Create(AppUser appUser);
     }
 }
