@@ -56,7 +56,7 @@ namespace StudentApp.WinForm.Forms.AuthForms
             if (!string.IsNullOrEmpty(txtName.Text) && !string.IsNullOrEmpty(txtLastName.Text) && !string.IsNullOrEmpty(txtPassword.Text) && !string.IsNullOrEmpty(txtPhoneNumber.Text) && !string.IsNullOrEmpty(txtStudentNumber.Text) && !string.IsNullOrEmpty(txtUsername.Text) && selectedGender != null && selectedInstructor != null)
             {
 
-                appUserService.CreateUser(new DTOs.StudentCreateDto
+                string result = appUserService.CreateUser(new DTOs.StudentCreateDto
                 {
                     GenderId = selectedGender.Id,
                     InstructorId = selectedInstructor.Id,
@@ -65,8 +65,10 @@ namespace StudentApp.WinForm.Forms.AuthForms
                     PhoneNumber = txtPhoneNumber.Text,
                     StudentNumber = int.Parse(txtStudentNumber.Text),
                     Username = txtUsername.Text,
-                    Surname = txtLastName.Text, 
+                    Surname = txtLastName.Text,
                 });
+
+                MessageBox.Show(result);
             }
             else
             {
@@ -85,7 +87,7 @@ namespace StudentApp.WinForm.Forms.AuthForms
 
         private void cmbInstructor_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(cmbInstructor.SelectedItem != null)
+            if (cmbInstructor.SelectedItem != null)
             {
                 selectedInstructor = cmbInstructor.SelectedItem as InstructorSelectListDto;
             }

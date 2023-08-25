@@ -75,7 +75,7 @@
             txtName.Margin = new Padding(4);
             txtName.Name = "txtName";
             txtName.Size = new Size(480, 30);
-            txtName.TabIndex = 3;
+            txtName.TabIndex = 0;
             // 
             // txtLastName
             // 
@@ -83,7 +83,7 @@
             txtLastName.Margin = new Padding(4);
             txtLastName.Name = "txtLastName";
             txtLastName.Size = new Size(480, 30);
-            txtLastName.TabIndex = 4;
+            txtLastName.TabIndex = 1;
             // 
             // label3
             // 
@@ -112,7 +112,7 @@
             txtPhoneNumber.Margin = new Padding(4);
             txtPhoneNumber.Name = "txtPhoneNumber";
             txtPhoneNumber.Size = new Size(480, 30);
-            txtPhoneNumber.TabIndex = 4;
+            txtPhoneNumber.TabIndex = 3;
             // 
             // label5
             // 
@@ -148,7 +148,7 @@
             cmbGender.Location = new Point(221, 140);
             cmbGender.Name = "cmbGender";
             cmbGender.Size = new Size(480, 30);
-            cmbGender.TabIndex = 7;
+            cmbGender.TabIndex = 2;
             cmbGender.SelectedIndexChanged += cmbGender_SelectedIndexChanged;
             // 
             // txtPassword
@@ -157,7 +157,7 @@
             txtPassword.Margin = new Padding(4);
             txtPassword.Name = "txtPassword";
             txtPassword.Size = new Size(480, 30);
-            txtPassword.TabIndex = 4;
+            txtPassword.TabIndex = 5;
             // 
             // label7
             // 
@@ -184,7 +184,7 @@
             btnCancel.Location = new Point(119, 427);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(582, 41);
-            btnCancel.TabIndex = 8;
+            btnCancel.TabIndex = 9;
             btnCancel.Text = "Vazgeç";
             btnCancel.UseVisualStyleBackColor = true;
             btnCancel.Click += btnCancel_Click;
@@ -195,7 +195,7 @@
             txtStudentNumber.Margin = new Padding(4);
             txtStudentNumber.Name = "txtStudentNumber";
             txtStudentNumber.Size = new Size(480, 30);
-            txtStudentNumber.TabIndex = 4;
+            txtStudentNumber.TabIndex = 6;
             // 
             // label8
             // 

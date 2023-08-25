@@ -39,7 +39,7 @@ namespace StudentApp.Business.Managers
             userRepository = container.GetAppUserRepositoryInstance();
             studentRepository = container.GetStudentRepositoryInstance();
         }
-        public void CreateUser(StudentCreateDto createdDto)
+        public string CreateUser(StudentCreateDto createdDto)
         {
             //var user = new Entities.AppUser { 
             //GenderId = createdDto.GenderId,
@@ -59,7 +59,7 @@ namespace StudentApp.Business.Managers
             // ADO.NET TRANSACTION => 
 
             // bir iş  transaction 
-            userRepository.Create(new Entities.AppUser
+            var userToStudentTO = userRepository.Create(new Entities.AppUser
             {
                 GenderId = createdDto.GenderId,
                 Name = createdDto.Name,
@@ -71,13 +71,15 @@ namespace StudentApp.Business.Managers
 
 
             // bir iş transaction
-            studentRepository.Create(new Entities.Student
+            string result = studentRepository.Create(new Entities.Student
             {
                 InstructorId = createdDto.InstructorId,
                 StudentNumber = createdDto.StudentNumber,
-                UserId = createdDto.UserId,
-            });
-            
+                UserId = userToStudentTO.CreatedUserId,
+            }, userToStudentTO);
+
+            return result;
+
         }
     }
 }
